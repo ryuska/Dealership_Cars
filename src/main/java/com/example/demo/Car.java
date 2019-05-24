@@ -24,8 +24,8 @@ public class Car {
     private String headshot;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name ="dealership_id")
-    private Dealership dealership;
+    @JoinColumn(name ="category_id")
+    private Category category;
 
 
     public long getId() {
@@ -68,11 +68,11 @@ public class Car {
         this.headshot = headshot;
     }
 
-    public Dealership getDealership() {
-        return dealership;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setDealership(Dealership dealership) {
-        this.dealership = dealership;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

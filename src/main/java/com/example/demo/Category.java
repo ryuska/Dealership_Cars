@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
-public class Dealership {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -16,7 +16,7 @@ public class Dealership {
     @Size(min=3)
     private String name;
 
-    @OneToMany(mappedBy = "dealership", cascade = CascadeType.ALL,
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
     public Set<Car> cars;
 

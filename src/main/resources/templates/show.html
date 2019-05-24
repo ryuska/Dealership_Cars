@@ -5,14 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/">Show ALL Dealerships</a><br/>
-<h2>Dealership</h2>
-Name:<span th:text="${dealership.name}"></span><br/>
+<a href="/">Show ALL Categories</a><br/>
+<h2>Category</h2>
+Name:<span th:text="${category.name}"></span><br/>
 
 
 Cars:
 <ul th:href="@{/addcars}">
-    <th:block th:each="car : ${dealership.cars}">
+    <th:block th:each="car : ${category.cars}">
         <div th:if="${car.headshot} !=null">
             <img th:src="${car.headshot}" />
             <hr />

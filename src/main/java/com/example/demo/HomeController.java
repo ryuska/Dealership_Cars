@@ -15,54 +15,54 @@ import java.util.Map;
 @Controller
 public class HomeController {
     @Autowired
-    DealershipRepository dealershipRepository;
+    CategoryRepository categoryRepository;
     @Autowired
     CarRepository carRepository;
     @Autowired
     CloudinaryConfig cloudc;
 
     @RequestMapping("/")
-    public String listdealership(Model model){
-        model.addAttribute("dealerships", dealershipRepository.findAll());
+    public String listcategory(Model model){
+        model.addAttribute("categories", categoryRepository.findAll());
         return "list";
     }
     @GetMapping("/add")
-    public String dealershipform(Model model){
+    public String categoryform(Model model){
         model.addAttribute("car", carRepository.findAll());
-        model.addAttribute("dealership", new Dealership());
-        return "dealershipform";
+        model.addAttribute("category", new Category());
+        return "categoryform";
 
     }
-    @PostMapping("/processdealership")
-    public String processform(@Valid Dealership dealership, BindingResult result, Model model){
+    @PostMapping("/processcategory")
+    public String processform(@Valid Category category, BindingResult result, Model model){
         if(result.hasErrors()){
             model.addAttribute("cars", carRepository.findAll());
-            return "dealershipform";
+            return "categoryform";
         }
-        dealershipRepository.save(dealership);
+        categoryRepository.save(category);
         return "redirect:/";
     }
 
     @RequestMapping("/detail/{id}")
-    public String showDealership(@PathVariable("id") long id, Model model){
-        model.addAttribute("dealership", dealershipRepository.findById(id).get());
+    public String showCategory(@PathVariable("id") long id, Model model){
+        model.addAttribute("category", categoryRepository.findById(id).get());
         return "show";
     }
     @RequestMapping("/update/{id}")
-    public String updateDealership(@PathVariable("id") long id, Model model){
+    public String updateCategory(@PathVariable("id") long id, Model model){
         model.addAttribute("cars", carRepository.findAll());
-        model.addAttribute("dealership", dealershipRepository.findById(id).get());
-        return "dealershipform";
+        model.addAttribute("category", categoryRepository.findById(id).get());
+        return "categoryform";
 
     }
     @RequestMapping("/delete/{id}")
-    public  String delDealership(@PathVariable("id") long id){
-        dealershipRepository.deleteById(id);
+    public  String delCategory(@PathVariable("id") long id){
+        categoryRepository.deleteById(id);
         return "redirect:/";
     }
     @RequestMapping("/addcars/{id}")
     public String addCars(@PathVariable("id") long id, Model model){
-        model.addAttribute("dealership", dealershipRepository.findById(id).get() );
+        model.addAttribute("category", categoryRepository.findById(id).get() );
         model.addAttribute("car", new Car());
         return "carform";
     }

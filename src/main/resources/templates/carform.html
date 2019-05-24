@@ -7,10 +7,10 @@
 <body>
 <form action="#" th:action="@{/processcar}" th:object="${car}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}"/>
-    DEALERSHIP: <select name="dealership" id="dealership" class="customer-select" th:field="*{dealership}">
-    <option th:each="deal: ${dealership}"
-            th:value="${deal.id}"
-            th:text="${deal.name}">
+    CATEGORY: <select name="category" id="category" class="customer-select" th:field="*{category}">
+    <option th:each="cat: ${category}"
+            th:value="${cat.id}"
+            th:text="${cat.name}">
     </option><br/>
 </select>
 

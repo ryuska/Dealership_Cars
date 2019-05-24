@@ -5,25 +5,25 @@
     <title>Title</title>
 </head>
 <body>
-<a th:href="@{/add}">Add a Dealership</a>
+<a th:href="@{/add}">Add a Category</a>
 <table class="table">
     <thead>
     <tr>
 
-        <th scope="col">Dealership Name</th>
+        <th scope="col">Category Name</th>
 
     </tr>
     </thead>
     <tbody>
-    <tr th:each="dealership:${dealerships}">
+    <tr th:each="category:${categories}">
         <th scope="row"></th>
-        <td th:text="${dealership.name}"></td>
+        <td th:text="${category.name}"></td>
 
         <td>
-            <a th:href="@{/update/{id}(id=${dealership.id})}">Update</a>
-            <a th:href="@{/detail/{id}(id=${dealership.id})}">Details</a>
-            <a th:href="@{/addcars/{id}(id=${dealership.id})}">Add Car</a>
-            <a th:href="@{/delete/{id}(id=${dealership.id})}">Delete</a>
+            <a th:href="@{/update/{id}(id=${category.id})}">Update</a>
+            <a th:href="@{/detail/{id}(id=${category.id})}">Details</a>
+            <a th:href="@{/addcars/{id}(id=${category.id})}">Add Car</a>
+            <a th:href="@{/delete/{id}(id=${category.id})}">Delete</a>
         </td>
     </tr>
 </body>
