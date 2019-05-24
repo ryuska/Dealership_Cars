@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/processcar}" th:object="${car}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}"/>
+    DEALERSHIP: <select name="dealership" id="dealership" class="customer-select" th:field="*{dealership}">
+    <option th:each="deal: ${dealership}"
+            th:value="${deal.id}"
+            th:text="${deal.name}">
+    </option><br/>
+</select>
+
+    Make: <input type="text" th:field="*{make}"/>
+    <span th:if="${#fields.hasErrors('make')}" th:errors="*{make}"></span><br/>
+    Model: <input type="text" th:field="*{model}"/>
+    <span th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></span><br/>
+    Year: <input type="text" th:field="*{year}"/>
+    <span th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span><br/>
+    <input type="file" name="file"/><br/>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

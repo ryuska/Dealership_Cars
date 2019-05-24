@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/">Show ALL Dealerships</a><br/>
+<h2>Dealership</h2>
+Name:<span th:text="${dealership.name}"></span><br/>
+
+
+Cars:
+<ul th:href="@{/addcars}">
+    <th:block th:each="car : ${dealership.cars}">
+        <div th:if="${car.headshot} !=null">
+            <img th:src="${car.headshot}" />
+            <hr />
+        </div>
+        <li th:inline="text">[[${car.make}]] [[${car.model}]]</li>
+        <li th:inline="text">[[${car.year}]]</li>
+    </th:block>
+</ul>
+</body>
+</html>
